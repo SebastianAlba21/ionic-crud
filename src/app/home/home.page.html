@@ -1,20 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Estudiantes </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-25>Nombre</ion-col>
+      <ion-col col-25>Universidad</ion-col>
+      <ion-col col-25>Eliminar</ion-col>
+      <ion-col col-25>Editar</ion-col>
+    </ion-row>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-row wrap *ngFor="let item of listado; let index = index">
+      <ion-col col-25>{{ item.nombre }}</ion-col>
+      <ion-col col-25>{{ item.universidad }}</ion-col>
+      <ion-col col-25
+        ><ion-button expand="full" (click)="eliminar(item.id)"
+          >Eliminar</ion-button
+        ></ion-col
+      >
+      <ion-col col-25
+        ><ion-button
+          expand="full"
+          routerLink="/editar"
+          (click)="editar(item.id)"
+          >Editar</ion-button
+        ></ion-col
+      >
+    </ion-row>
+  </ion-grid>
+
+  <ion-button routerLink="/form">Agregar</ion-button>
 </ion-content>
